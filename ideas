@@ -1,0 +1,30 @@
+hexbright fw ideas:
+
+plan: write everything without sleep modes, do sleep mode testing on other arduino
+
+sleep mode - research sleep modes
+	wake up from switch interrupt
+	wake up from charge interrupt
+	disable ADC during sleep, reenable on wakeup
+	if connected to usb / power, don't sleep.
+		if charged, keep charge light solid, but at dimmer level
+
+interrupt for switch
+	handle state machine and transitions there
+		only sleep in off mode. while on, power consumption of micro is negligible
+	if only level interrupt and not edge interrupt, debounce interrupt with last_interrupt time
+		even for edge interrupt
+		will time work across sleep states?
+	timeout for transitioning to next mode vs. power off
+		1s?
+
+timer interrupt for checking temp?
+	only when on
+
+fade indicator for charging
+
+#define for serial comms
+	#ifdef / #endif
+
+main loop:
+	pretty much do nothing
